@@ -31,8 +31,15 @@ class ViewController: UIViewController {
         
         self.sceneView.scene.rootNode.addChildNode(earth)
         
+        let action = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians), z: 0, duration: 8)
+        let forever  = SCNAction.repeatForever(action)
+        earth.runAction(forever) // run rotation on the earth
+        
     }
 
 
 }
 
+extension Int {
+    var degreesToRadians: Double { return Double(self) * .pi / 180 }
+}
