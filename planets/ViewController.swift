@@ -17,7 +17,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
+        self.sceneView.autoenablesDefaultLighting = true
         self.sceneView.session.run(configuration)
+        
         // Do any additional setup after loading the view.
     }
     
@@ -27,6 +29,9 @@ class ViewController: UIViewController {
         // earth.geometry?.firstMaterial?.diffuse.contents
         
         earth.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "EarthDay")
+        earth.geometry?.firstMaterial?.specular.contents = UIImage(named: "EarthSpecular")
+        earth.geometry?.firstMaterial?.emission.contents = UIImage(named: "EarthClouds")
+        earth.geometry?.firstMaterial?.normal.contents = UIImage(named: "EarthNormal")
         earth.position = SCNVector3(0,0,-1)
         
         self.sceneView.scene.rootNode.addChildNode(earth)
